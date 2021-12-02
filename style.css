@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+}
+
+html,
+body {
+  --black: hsl(240, 6%, 13%);
+  --gray: hsl(240, 9%, 89%); /* --gray é variável */
+
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #000;
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+main {
+  background: url(images/background.svg);
+  width: 375px;
+  height: 812px;
+}
+
+.container {
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  color: var(--gray);
+}
+
+.avatar {
+  width: 10rem;
+  margin: 11.5rem auto 0;
+  position: relative; /* o avatar span utiliza como base */
+}
+
+.avatar span {
+  position: absolute; /* nível diferente */
+  top: -15px;
+  z-index: 1; /* posicionamento no eixo z */
+}
+
+.avatar > img {
+  /* > pega a imagem no primeiro nível */
+  width: 10rem;
+  height: 11.5rem;
+  object-fit: cover; /* a imagem se adapta às medidas acima */
+
+  clip-path: polygon(
+    50% 0,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0 75%,
+    0 25%
+  ); /* https://bennettfeely.com/clippy/ */
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+a {
+  color: var(--gray);
+  text-decoration: none;
+
+  margin-top: 0.25rem;
+
+  display: flex; /* vai centralizar texto e icone do github no eixo vertical */
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  margin-top: 2rem;
+}
+
+ul {
+  margin-top: 4rem;
+
+  list-style: none; /* tira a bolinha que indica cada elemento */
+  padding: 0;
+
+  display: flex; /* deixa um do lado do outro */
+  gap: 0.5rem; /* espaço entre eles */
+
+  justify-content: center;
+}
