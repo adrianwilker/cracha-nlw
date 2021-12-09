@@ -5,7 +5,7 @@
 html,
 body {
   --black: hsl(240, 6%, 13%);
-  --gray: hsl(240, 9%, 89%); /* --gray é variável */
+  --gray: hsl(240, 9%, 89%);
 
   height: 100%;
   font-family: 'Roboto', sans-serif;
@@ -18,10 +18,13 @@ body {
   place-items: center;
 }
 
-main {
-  background: url(images/background.svg);
-  width: 375px;
-  height: 812px;
+@media (min-width: 120px) {
+  main {
+    background: url(images/background.svg) no-repeat center/cover;
+    width: 100vw;
+    min-height: 812px;
+    height: 100vh;
+  }
 }
 
 .container {
@@ -36,20 +39,34 @@ main {
 .avatar {
   width: 10rem;
   margin: 11.5rem auto 0;
-  position: relative; /* o avatar span utiliza como base */
+  position: relative;
 }
 
 .avatar span {
-  position: absolute; /* nível diferente */
+  position: absolute;
   top: -15px;
-  z-index: 1; /* posicionamento no eixo z */
+  z-index: 1;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  animation: selo-rotacao 25s infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes selo-rotacao {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .avatar > img {
-  /* > pega a imagem no primeiro nível */
   width: 10rem;
   height: 11.5rem;
-  object-fit: cover; /* a imagem se adapta às medidas acima */
+  object-fit: cover;
 
   clip-path: polygon(
     50% 0,
@@ -58,7 +75,17 @@ main {
     50% 100%,
     0 75%,
     0 25%
-  ); /* https://bennettfeely.com/clippy/ */
+  );
+}
+
+@media (min-width: 960px) {
+  main {
+    background: url(images/desktop.svg) no-repeat center;
+  }
+
+  .avatar {
+    margin: 13rem auto 0;
+  }
 }
 
 h1 {
@@ -72,7 +99,7 @@ a {
 
   margin-top: 0.25rem;
 
-  display: flex; /* vai centralizar texto e icone do github no eixo vertical */
+  display: flex;
   gap: 0.75rem;
   justify-content: center;
   align-items: center;
@@ -83,13 +110,42 @@ p {
 }
 
 ul {
-  margin-top: 4rem;
+  margin-top: 2rem;
 
-  list-style: none; /* tira a bolinha que indica cada elemento */
+  list-style: none;
   padding: 0;
 
-  display: flex; /* deixa um do lado do outro */
-  gap: 0.5rem; /* espaço entre eles */
+  display: flex;
+  gap: 0.5rem;
 
   justify-content: center;
+}
+
+.youtube-div,
+.instagram-div,
+.twitter-div,
+.facebook-div {
+  background-color: #333339;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease-out;
+}
+
+.youtube-div:hover {
+  background-color: #ef1b1a;
+}
+
+.instagram-div:hover {
+  background-color: #d22b9c;
+}
+
+.twitter-div:hover {
+  background-color: #1ea0f1;
+}
+
+.facebook-div:hover {
+  background-color: #1b4889;
 }
