@@ -21,7 +21,7 @@ body {
 @media (min-width: 120px) {
   main {
     background: url(images/background.svg) no-repeat center/cover;
-    width: 100vw;
+    width: 100%;
     min-height: 812px;
     height: 100vh;
   }
